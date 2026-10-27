@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Apple 产品编年史 · 1976–2026 · 762 款全收录</title>
+<link rel="icon" type="image/png" href="assets/favicon.png?v=2"/>
+<style>
+  :root{
+    --bg:#fbfbfd; --surface:#ffffff; --surface-2:#f5f5f7;
+    --text:#1d1d1f; --text-2:#6e6e73; --text-3:#86868b;
+    --accent:#0071e3; --accent-press:#0077ed; --border:#d2d2d7; --border-2:#e8e8ed;
+    --shadow:0 4px 20px rgba(0,0,0,.06); --shadow-lg:0 18px 50px rgba(0,0,0,.18);
+    --radius:18px; --radius-sm:12px;
+    --maxw:1180px; --nav-h:56px;
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Helvetica,Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  ::selection{background:rgba(0,113,227,.18)}
+
+  /* ---------- NAV ---------- */
+  .nav{position:sticky;top:0;z-index:50;height:var(--nav-h);background:rgba(251,251,253,.82);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--border-2)}
+  .nav-in{display:flex;align-items:center;gap:18px;max-width:var(--maxw);margin:0 auto;height:100%;padding:0 22px}
+  .brand{font-size:18px;font-weight:600;letter-spacing:-.02em;display:flex;align-items:center;gap:8px;white-space:nowrap}
+  .brand .logo{width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 32% 30%,#fff 0 18%,#1d1d1f 19% 100%);border:1.5px solid #1d1d1f}
+  .search{flex:1;max-width:380px;position:relative}
+  .search input{width:100%;height:34px;border:1px solid var(--border);background:var(--surface-2);border-radius:980px;padding:0 14px 0 34px;font-size:14px;color:var(--text);outline:none;transition:.2s;-webkit-appearance:none;appearance:none}
+  .search input::-webkit-search-cancel-button{display:none}
+  /* 搜索浮层：结果在搜索框下方展示，点击直接开弹窗（与时间线/分类分离）。
+     overscroll-behavior:contain——浮层滚到底就停，不把滚动链到页面（用户报的 bug） */
+  .search-panel{position:absolute;top:calc(100% + 10px);left:0;width:400px;max-width:calc(100vw - 44px);max-height:min(66vh,520px);overflow-y:auto;overscroll-behavior:contain;background:#fff;border:1px solid var(--border-2);border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.16);padding:6px;z-index:130;opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .16s,transform .16s,visibility .16s;scrollbar-width:none}
+  .search-panel::-webkit-scrollbar{display:none;width:0;height:0}
+  .search-panel.show{opacity:1;visibility:visible;transform:none}
+  .search-panel .sp-head{font-size:11.5px;color:var(--text-3);padding:8px 12px 6px;letter-spacing:.01em}
+  .search-panel .sp-item{display:flex;align-items:center;gap:12px;padding:8px 10px;border-radius:10px;cursor:pointer;transition:background .12s}
+  .search-panel .sp-item:hover{background:var(--surface-2)}
+  .search-panel .sp-thumb{width:44px;height:44px;flex:0 0 auto;background:#fff;border:1px solid var(--border-2);border-radius:9px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .search-panel .sp-thumb img{max-width:100%;max-height:100%;object-fit:contain;padding:3px}
+  .search-panel .sp-thumb .ph{font-size:16px;font-weight:600;color:#c7c7cc}
+  .search-panel .sp-txt{min-width:0}
+  .search-panel .sp-name{font-size:13.5px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .search-panel .sp-meta{font-size:11.5px;color:var(--text-3);margin-top:1px}
+  .search input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 4px rgba(0,113,227,.12)}
+  .search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:15px;height:15px;fill:var(--text-3)}
+  .lang-switch{display:flex;background:var(--surface-2);border-radius:980px;padding:3px;gap:2px;flex:0 0 auto;margin-left:auto}
+  .lang-switch button{border:0;background:transparent;font:inherit;font-size:12px;font-weight:500;color:var(--text-2);padding:6px 12px;border-radius:980px;cursor:pointer;transition:.18s}
+  .lang-switch button.active{background:#fff;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+
+  /* ---------- HERO ---------- */
+  .hero{max-width:var(--maxw);margin:0 auto;padding:72px 22px 40px;text-align:center}
+  .hero h1{font-size:clamp(34px,6vw,64px);font-weight:700;letter-spacing:-.03em;line-height:1.05}
+  .hero p{margin:18px auto 0;max-width:640px;color:var(--text-2);font-size:clamp(14px,1.8vw,16px);line-height:1.7}
+  .hero p .hero-by{display:block;margin-top:10px;font-size:12.5px;color:var(--text-3);letter-spacing:.02em}
+
+  /* ---------- VIEW CONTAINER ---------- */
+  .view{max-width:var(--maxw);margin:0 auto;padding:18px 22px 100px}
+  /* 内容少时（如分类某二级 tab 只有 1-2 款）不要把页面撑到一滚到底：
+     视图至少撑到一屏 + 240px，内容下方留出充足空白，页面也有适当滚动余量 */
+  #view-timeline,#view-cats{min-height:calc(100vh + 240px);min-height:calc(100dvh + 240px)}
+  .hidden{display:none!important}
+  .hide{display:none!important}
+
+  /* ---------- VIEW SEGMENTED SWITCH ---------- */
+  .seg-bar{max-width:var(--maxw);margin:0 auto;padding:8px 22px 16px;text-align:center}
+  .seg{display:inline-flex;background:var(--surface-2);border-radius:980px;padding:3px;gap:2px}
+  .seg button{border:0;background:transparent;font:inherit;font-size:14px;font-weight:500;color:var(--text-2);padding:9px 26px;border-radius:980px;cursor:pointer;transition:.18s}
+  .seg button.active{background:#fff;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+
+  /* ---------- CHIPS ---------- */
+  .chips{display:flex;align-items:center;gap:8px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:none;-ms-overflow-style:none}
+  .chips::-webkit-scrollbar{display:none;width:0;height:0}
+  /* 裁切渐隐：mask 作用于元素整体渲染，边缘胶囊会一起渐隐（inset box-shadow 画在子元素
+     下层盖不住胶囊）；与分类页 fam-tabs 同一套 */
+  .chips.sh-right{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 44px),rgba(0,0,0,0));mask-image:linear-gradient(to right,#000 calc(100% - 44px),rgba(0,0,0,0))}
+  .chips.sh-left{-webkit-mask-image:linear-gradient(to right,rgba(0,0,0,0),#000 44px);mask-image:linear-gradient(to right,rgba(0,0,0,0),#000 44px)}
+  .chips.sh-left.sh-right{-webkit-mask-image:linear-gradient(to right,rgba(0,0,0,0),#000 44px,#000 calc(100% - 44px),rgba(0,0,0,0));mask-image:linear-gradient(to right,rgba(0,0,0,0),#000 44px,#000 calc(100% - 44px),rgba(0,0,0,0))}
+
+  /* ---------- 一级分类按钮内嵌下拉箭头 + 悬浮展开二级菜单（多选） ---------- */
+  .chip .chev{width:9px;height:6px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.5;transition:transform .18s,opacity .18s;margin-left:1px}
+  .chip:hover .chev{opacity:.85}
+  .chip.menu-open .chev{transform:rotate(180deg);opacity:1}
+  .chip.filtered{border-color:#1d1d1f}
+  .chip.filtered::after{content:attr(data-badge);display:inline-flex;align-items:center;justify-content:center;min-width:15px;height:15px;padding:0 4px;border-radius:980px;background:var(--text);color:#fff;font-size:10px;font-weight:600;margin-left:2px;font-variant-numeric:tabular-nums}
+  /* 菜单用 fixed：父级 chips 有 overflow 横向滚动，会裁掉绝对定位面板 */
+  .fam-menu{position:fixed;left:0;top:0;min-width:216px;max-height:min(340px,60vh);overflow-y:auto;background:#fff;border:1px solid var(--border-2);border-radius:14px;box-shadow:0 10px 34px rgba(0,0,0,.13);padding:6px;z-index:120;opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .16s,transform .16s,visibility .16s;scrollbar-width:none}
+  .fam-menu::-webkit-scrollbar{display:none}
+  .fam-menu.show{opacity:1;visibility:visible;transform:none}
+  .fam-menu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}  /* 桥接 chip 与菜单之间的间隙，避免鼠标下滑时菜单关闭 */
+  .fam-menu .hd{padding:7px 10px 6px;font-size:11px;color:var(--text-3);letter-spacing:.03em}
+  .fam-item{display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:9px;font-size:13px;color:var(--text);cursor:pointer;user-select:none;transition:background .12s}
+  .fam-item:hover{background:var(--surface-2)}
+  .fam-item .box{width:14px;height:14px;border-radius:4px;border:1.5px solid #c7c7cc;display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:.14s}
+  .fam-item.on .box{background:var(--text);border-color:var(--text)}
+  .fam-item.on .box::after{content:"";width:7px;height:4px;border-left:1.6px solid #fff;border-bottom:1.6px solid #fff;transform:rotate(-45deg) translateY(-1px)}
+  .fam-item .cnt{margin-left:auto;font-size:11px;color:var(--text-3);font-variant-numeric:tabular-nums}
+  .chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;border:1px solid var(--border);background:#fff;border-radius:980px;padding:7px 14px;font-size:13px;font-weight:500;color:var(--text);cursor:pointer;transition:.16s;white-space:nowrap}
+  .chip:hover{border-color:#b0b0b6}
+  .chip.active{background:var(--text);color:#fff;border-color:var(--text)}
+
+  /* ---------- TIMELINE (year rail pinned to viewport right edge) ---------- */
+  .tl-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:0;align-items:start}
+  .tl-main{min-width:0}
+  .tl-year{margin-top:26px;scroll-margin-top:calc(var(--nav-h) + 76px)}
+  .tl-year:first-child{margin-top:6px}
+  .tl-yhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border-2)}
+  .tl-yhead .ty{font-size:15px;font-weight:600;letter-spacing:-.01em;line-height:1}
+  .tl-yhead .tc{font-size:12px;color:var(--text-3)}
+  .tl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:16px}
+
+  /* ---------- HORIZONTAL TIME AXIS (sticky, jump-only, not a filter) ---------- */
+  .tl-axis{position:sticky;top:var(--nav-h);z-index:45;background:rgba(251,251,253,.85);backdrop-filter:saturate(180%) blur(20px);margin:2px -22px 4px;padding:10px 22px 12px;border-bottom:1px solid var(--border-2)}
+  .axis-track{position:relative;height:36px}
+  .axis-line{position:absolute;left:0;right:0;top:21px;height:1px;background:var(--border-2)}
+  .axis-dec{position:absolute;top:15px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;border:0;background:none;cursor:pointer;font:inherit;padding:0}
+  .axis-dec .tick{width:1px;height:12px;background:var(--border);transition:background .15s}
+  .axis-dec .lb{font-size:11px;color:var(--text-3);font-weight:500;margin-top:3px;letter-spacing:.02em;font-variant-numeric:tabular-nums;transition:color .15s}
+  .axis-dec:hover .lb{color:var(--text)}
+  .axis-dec:hover .tick{background:var(--text-2)}
+  .axis-dec.active .lb{color:var(--accent);font-weight:600}
+  .axis-dec.active .tick{background:var(--accent)}
+  .axis-yr{position:absolute;top:17.5px;transform:translateX(-50%);width:7px;height:7px;border-radius:50%;background:#fff;border:1.5px solid var(--border);cursor:pointer;padding:0;transition:.15s}
+  .axis-yr:hover{border-color:var(--text-2);transform:translateX(-50%) scale(1.3)}
+  .axis-yr.active{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 3px rgba(0,113,227,.14)}
+  .axis-yr::after{content:attr(data-y);position:absolute;bottom:13px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:500;color:var(--text-2);background:#fff;border:1px solid var(--border-2);border-radius:6px;padding:1px 6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+  .axis-yr:hover::after{opacity:1}
+
+  /* ---------- CATEGORY VIEW: LEFT SIDEBAR + GRID ---------- */
+  .cats-wrap{display:grid;grid-template-columns:176px minmax(0,1fr);gap:44px;align-items:start;width:100%}
+  /* 侧栏 fixed：sticky 在「内部可滚 + 外层滚动」组合下会随页面释放上移，fixed 彻底钉住，
+     左右滚动页面时侧栏不动；内部列表自己滚，滚到底后滚轮自然链到页面 */
+  .cats-side{position:fixed;top:calc(var(--nav-h) + 18px);left:max(22px, calc((100vw - var(--maxw)) / 2 + 22px));width:176px;max-height:calc(100vh - var(--nav-h) - 36px);overflow-y:auto;scrollbar-width:none;padding:2px 6px 20px 0}
+  .cats-side::-webkit-scrollbar{display:none}
+  .cats-main{min-width:0;grid-column:2}
+  .cats-side .sd-title{font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--text-3);padding:16px 10px 7px;text-transform:uppercase}
+  .cats-side .sd-title:first-child{padding-top:4px}
+  .cats-side .sd-item{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:9px;font-size:13.5px;color:var(--text-2);cursor:pointer;transition:background .14s,color .14s;user-select:none}
+  .cats-side .sd-item:hover{background:var(--surface-2);color:var(--text)}
+  .cats-side .sd-item.active{background:var(--text);color:#fff}
+  .cats-side .sd-item .n{margin-left:auto;font-size:11px;color:var(--text-3);font-variant-numeric:tabular-nums}
+  .cats-side .sd-item.active .n{color:rgba(255,255,255,.62)}
+  .cats-main .cat-grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:22px}
+  @media (max-width:880px){
+    .cats-wrap{grid-template-columns:1fr;gap:10px}
+    .cats-main{grid-column:auto}
+    .cats-side{position:static;left:auto;width:auto;max-height:none;display:flex;gap:7px;overflow-x:auto;padding:0 0 12px;scrollbar-width:none}
+    .cats-side .sd-title{display:none}
+    .cats-side .sd-item{white-space:nowrap;border:1px solid var(--border);border-radius:980px;padding:6px 13px;font-size:12.5px;flex:0 0 auto}
+    .cats-side .sd-item .n{display:none}
+  }
+
+  /* ---------- CATEGORY: GROUP BLOCKS（大标题 + 子系列 tab） ---------- */
+  .group-block{margin-top:64px;scroll-margin-top:calc(var(--nav-h) + 16px)}
+  .group-block.first-vis{margin-top:4px}
+  .gb-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .gb-head h3{font-size:clamp(30px,4.4vw,44px);font-weight:700;letter-spacing:-.035em;line-height:1.05}
+  .gb-count{font-size:13px;color:var(--text-3);letter-spacing:.01em}
+
+  .fam-tabs{display:flex;gap:28px;overflow-x:auto;border-bottom:1px solid var(--border-2);margin:16px 0 24px;scrollbar-width:none}
+  .fam-tabs::-webkit-scrollbar{display:none}
+  /* 左右有裁切时的边缘渐隐（mask 让边缘 tab 一起渐隐，盖住被裁的胶囊/tab） */
+  .fam-tabs.sh-right{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 44px),rgba(0,0,0,0));mask-image:linear-gradient(to right,#000 calc(100% - 44px),rgba(0,0,0,0))}
+  .fam-tabs.sh-left{-webkit-mask-image:linear-gradient(to right,rgba(0,0,0,0),#000 44px);mask-image:linear-gradient(to right,rgba(0,0,0,0),#000 44px)}
+  .fam-tabs.sh-left.sh-right{-webkit-mask-image:linear-gradient(to right,rgba(0,0,0,0),#000 44px,#000 calc(100% - 44px),rgba(0,0,0,0));mask-image:linear-gradient(to right,rgba(0,0,0,0),#000 44px,#000 calc(100% - 44px),rgba(0,0,0,0))}
+  .fam-tab{position:relative;flex:0 0 auto;background:none;border:0;padding:8px 0 13px;font:inherit;font-size:15.5px;color:var(--text-3);cursor:pointer;transition:color .15s;white-space:nowrap;letter-spacing:-.01em}
+  .fam-tab:hover{color:var(--text-2)}
+  .fam-tab.active{color:var(--text);font-weight:600}
+  .fam-tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--text);border-radius:2px}
+  .fam-tab .tcnt{font-size:12px;color:var(--text-3);margin-left:6px;font-weight:400;font-variant-numeric:tabular-nums}
+  .fam-tab.active .tcnt{color:var(--text-2)}
+  .fam-panel.hide{display:none}
+  /* 单子系列大类无 tab 行时，标题与网格之间同样留出 24px */
+  .group-block > .cat-grid{margin-top:24px}
+  .cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:18px}
+
+  /* ---------- PRODUCT CARD ---------- */
+  .card{background:var(--surface);border:1px solid var(--border-2);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.3,1),box-shadow .22s,opacity .25s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .card .thumb{aspect-ratio:4/3;background:#fff;border-bottom:1px solid var(--border-2);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+  .card .thumb img{width:100%;height:100%;object-fit:contain;padding:10px;transition:transform .4s}
+  .card:hover .thumb img{transform:scale(1.04)}
+  .card .thumb .ph{font-size:30px;font-weight:700;color:#c7c7cc}
+  .card .body{padding:13px 14px 15px;flex:1;display:flex;flex-direction:column}
+  .card .pname{font-size:14.5px;font-weight:600;letter-spacing:-.01em;line-height:1.25;color:var(--text-2)}
+  .card .pname-en{font-size:11.5px;color:var(--text-3);margin-top:2px;line-height:1.3}
+  .card .pmeta{margin-top:auto;padding-top:8px;font-size:12px;color:var(--text-3);display:flex;align-items:center;gap:6px}
+  .card.dim{opacity:.18;filter:saturate(.4)}
+
+  .empty{text-align:center;color:var(--text-3);padding:60px 20px;font-size:15px}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- MODAL ---------- */
+  .modal-mask{position:fixed;inset:0;background:rgba(0,0,0,.42);backdrop-filter:blur(4px);z-index:100;display:flex;align-items:flex-start;justify-content:center;padding:40px 18px;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .25s}
+  .modal-mask.open{opacity:1;pointer-events:auto}
+  .modal{background:#fff;border-radius:22px;max-width:820px;width:100%;box-shadow:var(--shadow-lg);overflow:hidden;transform:translateY(18px) scale(.98);transition:transform .28s cubic-bezier(.2,.7,.3,1);position:relative}
+  .modal-mask.open .modal{transform:none}
+  .modal .close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:#1d1d1f;box-shadow:0 1px 4px rgba(0,0,0,.2);z-index:2}
+  .modal .hero-img{width:100%;aspect-ratio:16/9;background:#fff;border-bottom:1px solid var(--border-2);display:flex;align-items:center;justify-content:center;position:relative}
+  .modal .hero-img img{max-width:100%;max-height:100%;object-fit:contain;padding:18px}
+  .img-nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;border:1px solid var(--border-2);background:rgba(255,255,255,.92);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.08);transition:.18s;z-index:2}
+  .img-nav:hover{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.14);transform:translateY(-50%) scale(1.06)}
+  .img-nav svg{width:9px;height:15px;fill:none;stroke:#1d1d1f;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .img-nav.prev{left:16px}
+  .img-nav.next{right:16px}
+  .img-count{position:absolute;right:16px;bottom:12px;font-size:11px;color:var(--text-3);background:rgba(255,255,255,.85);border-radius:980px;padding:3px 10px;font-variant-numeric:tabular-nums}
+  .modal .m-body{padding:26px 30px 32px}
+  .modal h2{font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1.15}
+  .m-name-en{font-size:15px;color:var(--text-3);margin-top:3px}
+  .m-family{display:inline-flex;align-items:center;gap:7px;margin-top:10px;font-size:13px;font-weight:600;color:var(--text-2)}
+  .m-family .sep{color:var(--text-3);font-weight:400}
+  .m-toprow{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+  .m-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:20px 0 6px}
+  .m-fact{background:var(--surface-2);border-radius:12px;padding:10px 14px;min-width:0}
+  .m-fact .k{font-size:11px;color:var(--text-3);letter-spacing:.04em}
+  .m-fact .v{font-size:15px;font-weight:600;margin-top:3px}
+  .m-fact .v small{display:block;font-size:11.5px;font-weight:400;color:var(--text-3);margin-top:2px}
+  .m-desc{margin-top:18px;font-size:15px;line-height:1.65}
+  .m-desc p{margin-bottom:12px}
+  .m-sec{margin-top:24px}
+  .m-sec>h4{font-size:13px;color:var(--text-3);letter-spacing:.05em;margin:0 0 10px;font-weight:600}
+  .m-specs h5{font-size:13.5px;font-weight:600;margin:16px 0 6px;color:var(--text)}
+  .m-specs h5:first-child{margin-top:0}
+  /* 摄像头镜组 tab：与分类页子系列 tab 同一套样式 */
+  .cam-tabs{display:flex;gap:22px;border-bottom:1px solid var(--border-2);margin:2px 0 14px;overflow-x:auto;scrollbar-width:none}
+  .cam-tabs::-webkit-scrollbar{display:none}
+  .cam-tab{position:relative;flex:0 0 auto;background:none;border:0;padding:6px 0 10px;font:inherit;font-size:14px;color:var(--text-3);cursor:pointer;transition:color .15s;white-space:nowrap;letter-spacing:-.01em;-webkit-appearance:none;appearance:none;border-radius:0}
+  .cam-tab:hover{color:var(--text-2)}
+  .cam-tab.active{color:var(--text);font-weight:600}
+  .cam-tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--text);border-radius:2px}
+  .cam-panel.hide{display:none}
+  .m-specs .row{display:grid;grid-template-columns:170px 1fr;gap:10px;padding:7px 0;border-bottom:1px solid var(--border-2);font-size:14px}
+  .m-specs .row.wide{grid-template-columns:1fr}
+  .m-specs .row .lab{color:var(--text-2)}
+  .m-specs ul{margin:4px 0 4px 18px}
+  .m-specs li{margin-bottom:2px}
+  .m-aka{margin-top:18px;font-size:13px;color:var(--text-3)}
+  .m-notes{font-size:14px;color:var(--text-2);line-height:1.65}
+  .m-notes p{margin-bottom:10px}
+  .gallery{display:flex;gap:8px;padding:10px 14px 0;flex-wrap:wrap}
+  .gallery button{width:52px;height:40px;border:1px solid var(--border-2);border-radius:8px;background:#fff;padding:2px;cursor:pointer;overflow:hidden;display:flex;align-items:center;justify-content:center;transition:.15s}
+  .gallery button.active{border-color:var(--accent);box-shadow:0 0 0 2px rgba(0,113,227,.15)}
+  .gallery img{max-width:100%;max-height:100%;object-fit:contain}
+  .m-foot{display:none}
+
+  /* i18n: page-level switch in nav; .zh visible by default, .en hidden */
+  /* 中英切换：只隐藏另一语言，不对显示侧做 display 覆盖（否则 revert 会把 grid/flex 打回 block） */
+  body:not(.lang-en) .i18n>.en{display:none!important}
+  body.lang-en .i18n>.zh{display:none!important}
+
+  /* ---------- FOOTER ---------- */
+  footer{max-width:var(--maxw);margin:0 auto;padding:40px 22px 70px;color:var(--text-3);font-size:13px;line-height:1.7}
+  @media(max-width:640px){
+    .tl-yhead .ty{font-size:13px}
+    .stat{padding:0 18px}
+    .modal .m-body{padding:22px 20px 28px}
+    .m-specs .row{grid-template-columns:1fr;gap:2px}
+  }
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-in">
+      <div class="brand"><span class="logo"></span><span class="i18n"><span class="zh">Apple 历史产品</span><span class="en">Apple Product History</span></span></div>
+      <div class="search">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 5 1.49-1.5-5-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg>
+        <input id="search" type="text" placeholder="搜索产品、系列或年份，如 Macintosh、iPhone、PowerBook、2007…" autocomplete="off" />
+        <div class="search-panel" id="search-panel"></div>
+      </div>
+      <div class="lang-switch" id="lang-switch">
+        <button type="button" data-lang="zh" class="active">中文</button><button type="button" data-lang="en">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1 class="i18n"><span class="zh">探索 Apple 产品的<br/>演进历程</span><span class="en">The evolution of<br/>Apple products</span></h1>
+    <p class="i18n"><span class="zh">从第一台 Apple 计算机，到融入日常生活的数字设备。每一件产品，都是一个时代的缩影，也是 Apple 对未来的一次回答。</span><span class="en">From the first Apple computer to the devices woven into everyday life — every product is a snapshot of its era, and Apple’s answer to the future.</span></p>
+  </header>
+
+  <!-- VIEW SEGMENTED SWITCH -->
+  <div class="seg-bar">
+    <div class="seg" id="view-seg">
+      <button type="button" data-view="timeline" class="active"><span class="i18n"><span class="zh">时间线</span><span class="en">Timeline</span></span></button>
+      <button type="button" data-view="cats"><span class="i18n"><span class="zh">分类</span><span class="en">Categories</span></span></button>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <section class="view" id="view-timeline">
+    <div class="chips" id="group-chips"></div>
+    <div class="fam-menu" id="fam-menu"></div>
+    <div class="tl-axis" id="tl-axis"></div>
+    <div class="tl-layout">
+      <div class="tl-main" id="timeline"></div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="view hidden" id="view-cats">
+    <div class="cats-wrap">
+      <aside class="cats-side" id="cats-side"></aside>
+      <div class="cats-main" id="categories"></div>
+    </div>
+  </section>
+
+  <!-- MODAL -->
+  <div class="modal-mask" id="mask">
+    <div class="modal" id="modal">
+      <button class="close" id="modal-close" aria-label="关闭">×</button>
+      <div class="hero-img" id="m-img"></div>
+      <div class="gallery hidden" id="m-gallery"></div>
+      <div class="m-body" id="m-body"></div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+  (function(){
+    // 刷新时不恢复上次滚动位置：首次进入从顶部展示
+    try{ if(typeof history !== 'undefined' && 'scrollRestoration' in history) history.scrollRestoration = 'manual'; }catch(e){}
+    // 防页面惯性回弹：只在页面自身到达顶/底边界、且滚轮不在可滚的内层容器
+    // （弹窗 mask / 侧栏 / 浮层）上时吞掉滚轮。
+    // 不用 overscroll-behavior:none——它会把内层容器到边界后往页面的滚动链一起断掉，
+    // 导致「弹窗滚到底就卡住」「切分类后滚不动」
+    if(typeof window.addEventListener === 'function'){
+      const innerCanScroll = (target, dy)=>{
+        let n = target;
+        while(n && n.nodeType === 1 && n !== document.body && n !== document.documentElement){
+          const st = (typeof getComputedStyle === 'function') ? getComputedStyle(n) : null;
+          if(st && (st.overflowY === 'auto' || st.overflowY === 'scroll')){
+            if(dy < 0 && n.scrollTop > 0) return true;
+            if(dy > 0 && n.scrollTop + n.clientHeight < n.scrollHeight - 1) return true;
+          }
+          n = n.parentElement;
+        }
+        return false;
+      };
+      window.addEventListener('wheel', e=>{
+        if(e.defaultPrevented || e.ctrlKey) return;
+        const st = window.scrollY || document.documentElement.scrollTop || 0;
+        const max = (document.documentElement.scrollHeight || 0) - (window.innerHeight || 0);
+        const atTop = st <= 0 && e.deltaY < 0;
+        const atBottom = st >= max - 1 && e.deltaY > 0;
+        if(!atTop && !atBottom) return;
+        // 内层滚动容器还能朝该方向滚 → 不拦截（让内层滚，滚不动再链到页面）
+        if(e.target && innerCanScroll(e.target, e.deltaY)) return;
+        e.preventDefault();
+      }, {passive:false});
+    }
+    const D = window.APPLE_DATA;
+    const groups = D.groups;
+    const groupById = {};
+    groups.forEach(g=>groupById[g.id]=g);
+    // full product records by id (timeline entries are trimmed)
+    const FULL = {};
+    D.categories.forEach(c=>c.products.forEach(p=>{ FULL[p.id]=p; }));
+
+    const $ = s=>document.querySelector(s);
+    const el = (t,c)=>{const e=document.createElement(t); if(c)e.className=c; return e;};
+    const esc = s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    const slug = s=>String(s).replace(/[^a-z0-9]/gi,'_');
+
+    // ---------- GLOBAL LANGUAGE (nav switch, persisted) ----------
+    let LANG = 'zh';
+    try{ LANG = localStorage.getItem('apple-lang') || 'zh'; }catch(e){}
+    const SEARCH_PH = {
+      zh:'搜索产品、系列或年份',
+      en:'Search products, lines or years'
+    };
+    function applyLang(){
+      document.body.classList.toggle('lang-en', LANG==='en');
+      document.querySelectorAll('#lang-switch button').forEach(b=>b.classList.toggle('active', b.dataset.lang===LANG));
+      $('#search').placeholder = SEARCH_PH[LANG];
+    }
+    document.querySelectorAll('#lang-switch button').forEach(b=>b.addEventListener('click',()=>{
+      LANG = b.dataset.lang;
+      try{ localStorage.setItem('apple-lang', LANG); }catch(e){}
+      applyLang();
+      if(famOpenGid) renderFamMenu(famOpenGid);   // 菜单文案随语言更新
+    }));
+    applyLang();
+
+    function imgTag(p){
+      const src = p.img || null;
+      const ch = (p.name_zh||p.name||'?').charAt(0);
+      if(!src) return `<div class="ph">${esc(ch)}</div>`;
+      return `<img src="${src}" alt="${esc(p.name_zh||p.name)}" loading="lazy" onerror="this.style.display='none';var d=document.createElement('div');d.className='ph';d.textContent='${esc(ch)}';this.parentNode.appendChild(d);"/>`;
+    }
+
+    function card(p){
+      const g = groupById[p.group] || {color:'#86868b', name_zh:p.group_zh, name_en:p.group};
+      const c = el('div','card reveal');
+      const searchable = [p.name, p.name_zh, p.family, p.family_zh, p.group_zh, p.group_en, p.introduced_year].join(' ').toLowerCase();
+      c.dataset.name = searchable;
+      c.dataset.group = p.group;
+      c.dataset.family = p.family || '';
+      const enLine = (p.name_zh && p.name_zh !== p.name)
+        ? `<div class="pname-en i18n"><span class="zh">${esc(p.name)}</span><span class="en">${esc(p.name_zh)}</span></div>` : '';
+      c.innerHTML = `
+        <div class="thumb">${imgTag(p)}</div>
+        <div class="body">
+          <div class="pname i18n"><span class="zh">${esc(p.name_zh||p.name)}</span><span class="en">${esc(p.name)}</span></div>
+          ${enLine}
+          <div class="pmeta"><span class="i18n"><span class="zh">${esc(p.group_zh)}</span><span class="en">${esc(g.name_en||p.group)}</span></span> · ${p.introduced_year||'?'}</div>
+        </div>`;
+      c.addEventListener('click', ()=>openModal(p));
+      return c;
+    }
+
+    // ---------- GROUP FILTER CHIPS (timeline) ----------
+    const activeGroups = new Set();
+    const famSel = new Map();          // gid -> Set(family)，按大类各自的二级多选
+    const gc = $('#group-chips');
+    const famMenu = $('#fam-menu');
+    let famOpenGid = null, famTimer = null;
+
+    const allChip = el('div','chip active');
+    allChip.innerHTML = '<span class="i18n"><span class="zh">全部</span><span class="en">All</span></span>';
+    allChip.addEventListener('click',()=>{
+      activeGroups.clear(); famSel.clear(); closeFamMenu(); syncChips(); applyFilter();
+    });
+    gc.appendChild(allChip);
+
+    // 无二级筛选需求的大类（只有 1-2 个子系列，拆了反而难用）：只做一级开关
+    const NO_SUB_GROUPS = new Set(["Early Computers", "Display", "HomePod"]);
+    groups.forEach(g=>{
+      const hasSub = g.subfamilies.length > 1 && !NO_SUB_GROUPS.has(g.id);
+      const ch = el('div','chip');
+      ch.innerHTML = `<span class="i18n"><span class="zh">${esc(g.name_zh)}</span><span class="en">${esc(g.name_en)}</span></span>`
+        + (hasSub ? '<svg class="chev" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg>' : '');
+      ch.addEventListener('click',()=>{
+        if(activeGroups.has(g.id)) activeGroups.delete(g.id); else activeGroups.add(g.id);
+        // 点一级分类 = 同时取消该组的二级多选
+        if(famSel.has(g.id)){ famSel.delete(g.id); updateChipBadge(g.id); }
+        syncChips(); applyFilter();
+      });
+      if(hasSub){
+        ch.addEventListener('mouseenter', ()=>openFamMenu(g.id, ch));
+        ch.addEventListener('mouseleave', scheduleCloseFam);
+      }
+      ch.dataset.group = g.id;
+      gc.appendChild(ch);
+    });
+
+    // 菜单自身 hover 保持打开，移出则延迟关闭
+    famMenu.addEventListener('mouseenter', ()=>clearTimeout(famTimer));
+    famMenu.addEventListener('mouseleave', scheduleCloseFam);
+    // 浮层上滚动不带动页面：菜单能滚就滚菜单，不能滚或到边界也拦截，避免整页跳动
+    famMenu.addEventListener('wheel', e=>{
+      const canScroll = famMenu.scrollHeight > famMenu.clientHeight + 1;
+      if(!canScroll){ e.preventDefault(); return; }
+      const atTop = famMenu.scrollTop <= 0 && e.deltaY < 0;
+      const atBottom = famMenu.scrollTop + famMenu.clientHeight >= famMenu.scrollHeight - 1 && e.deltaY > 0;
+      if(atTop || atBottom) e.preventDefault();
+    }, { passive:false });
+    gc.addEventListener('scroll', ()=>{ if(famOpenGid) repositionFamMenu(); });
+    // tab 行 / chips 行 overflow-x:auto 会把纵向滚轮吞掉（overflow-y 计算值变为 auto 成为
+    // 滚动容器，有概率不向上链接到页面）→ 纵向滚轮转给页面滚动，横向滚轮才留给行内横滑
+    document.addEventListener('wheel', e=>{
+      const t = e.target && e.target.closest ? e.target.closest('.fam-tabs, .chips') : null;
+      if(!t || Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      e.preventDefault();
+      if(typeof window.scrollBy === 'function') window.scrollBy(0, e.deltaY);
+      else if(typeof window.scrollTo === 'function') window.scrollTo(0, (window.scrollY || 0) + e.deltaY);
+    }, {passive:false});
+    if(typeof window.addEventListener === 'function') window.addEventListener('resize', ()=>{ if(famOpenGid) repositionFamMenu(); });
+    function chipOf(gid){
+      return Array.from(gc.querySelectorAll('.chip')).find(c=>c.dataset.group === gid);
+    }
+    function scheduleCloseFam(){
+      clearTimeout(famTimer);
+      famTimer = setTimeout(closeFamMenu, 240);
+    }
+    function closeFamMenu(){
+      famMenu.classList.remove('show');
+      famMenu.innerHTML = '';
+      if(famOpenGid){
+        const c = chipOf(famOpenGid);
+        if(c) c.classList.remove('menu-open');
+      }
+      famOpenGid = null;
+    }
+    function openFamMenu(gid, chip){
+      clearTimeout(famTimer);
+      gc.querySelectorAll('.chip').forEach(c=>c.classList.remove('menu-open'));
+      chip.classList.add('menu-open');
+      famOpenGid = gid;
+      renderFamMenu(gid);
+      famMenu.classList.add('show');
+      repositionFamMenu();
+    }
+    function repositionFamMenu(){
+      const chip = famOpenGid && chipOf(famOpenGid);
+      if(!chip || typeof chip.getBoundingClientRect !== 'function') return;
+      const r = chip.getBoundingClientRect();
+      const w = famMenu.offsetWidth || 216;
+      const vw = window.innerWidth || 1200;
+      let left = r.left;
+      if(left + w > vw - 12) left = Math.max(12, vw - w - 12);
+      if(left < 8) left = 8;
+      // 下方空间不足时向上翻转，避免菜单超出视口
+      const mh = famMenu.offsetHeight || 300;
+      const vh = window.innerHeight || 800;
+      let top = r.bottom + 8;
+      if(top + mh > vh - 12) top = Math.max(12, r.top - mh - 8);
+      famMenu.style.left = left + 'px';
+      famMenu.style.top = top + 'px';
+    }
+    function renderFamMenu(gid){
+      const g = groups.find(x=>x.id === gid);
+      if(!g) return;
+      const sel = famSel.get(gid) || new Set();
+      famMenu.innerHTML = `<div class="hd i18n"><span class="zh">${esc(g.name_zh)} · 二级分类</span><span class="en">${esc(g.name_en)} · Sub-category</span></div>`;
+
+      const all = el('div','fam-item' + (sel.size ? '' : ' on'));
+      all.innerHTML = `<span class="box"></span><span class="i18n"><span class="zh">全部子系列</span><span class="en">All sub-lines</span></span><span class="cnt">${g.count}</span>`;
+      all.addEventListener('click', e=>{
+        e.stopPropagation();
+        famSel.delete(gid);
+        // 局部更新：不重建菜单 DOM（重建会让鼠标悬停目标消失 → 触发 mouseleave 关闭菜单）
+        famMenu.querySelectorAll('.fam-item').forEach((node, idx)=>node.classList.toggle('on', idx === 0));
+        applyFilter(); syncChips(); updateChipBadge(gid);
+      });
+      famMenu.appendChild(all);
+
+      g.subfamilies.forEach(s=>{
+        const it = el('div','fam-item' + (sel.has(s.family) ? ' on' : ''));
+        it.innerHTML = `<span class="box"></span><span class="i18n"><span class="zh">${esc(s.family_zh)}</span><span class="en">${esc(s.family)}</span></span><span class="cnt">${s.count}</span>`;
+        it.dataset.family = s.family;
+        it.addEventListener('click', e=>{
+          e.stopPropagation();
+          const set = famSel.get(gid) || new Set();
+          if(set.has(s.family)) set.delete(s.family); else set.add(s.family);
+          if(set.size) famSel.set(gid, set); else famSel.delete(gid);
+          it.classList.toggle('on', set.has(s.family));
+          const allItem = famMenu.querySelectorAll('.fam-item')[0];
+          if(allItem) allItem.classList.toggle('on', set.size === 0);
+          applyFilter(); syncChips(); updateChipBadge(gid);
+        });
+        famMenu.appendChild(it);
+      });
+      repositionFamMenu();
+    }
+    function updateChipBadge(gid){
+      const chip = chipOf(gid);
+      if(!chip) return;
+      const n = (famSel.get(gid) || new Set()).size;
+      chip.classList.toggle('filtered', n > 0);
+      if(n > 0) chip.dataset.badge = String(n); else delete chip.dataset.badge;
+    }
+
+    function syncChips(){
+      gc.querySelectorAll('.chip').forEach(ch=>{
+        if(ch.dataset.group){
+          // 有二级多选的组也亮一级 chip（选中子系列 = 该组处于筛选态）
+          const hasFam = (famSel.get(ch.dataset.group)||new Set()).size>0;
+          ch.classList.toggle('active', activeGroups.has(ch.dataset.group) || hasFam);
+        }
+      });
+      allChip.classList.toggle('active', activeGroups.size===0 && famSel.size===0);
+    }
+
+    // ---------- HORIZONTAL TIME AXIS (range follows the filtered years; jump-only) ----------
+    const allYears = [...new Set(D.timeline.map(t=>t.introduced_year).filter(Boolean))].sort((a,b)=>a-b);
+    const axisMarks = {};
+    const axisTrack = el('div','axis-track');
+    $('#tl-axis').appendChild(axisTrack);
+    const jumpYear = y => document.getElementById('y'+y)?.scrollIntoView({behavior:'smooth',block:'start'});
+    function renderAxis(ys){
+      ys = [...new Set(ys)].filter(Boolean).sort((a,b)=>a-b);
+      axisTrack.innerHTML = '<div class="axis-line"></div>';
+      Object.keys(axisMarks).forEach(k=>delete axisMarks[k]);
+      if(!ys.length) return;
+      const min = ys[0], max = ys[ys.length-1];
+      const pct = y => ((y - min)/(max - min)*100) + '%';
+      const decades = [];
+      for(let y = Math.ceil(min/10)*10; y <= max; y += 10) decades.push(y);
+      const marks = [...new Set([min, ...decades, max])].sort((a,b)=>a-b);
+      marks.forEach(y=>{
+        const b = el('button','axis-dec'); b.type='button'; b.dataset.year=y; b.style.left=pct(y);
+        b.innerHTML = `<span class="tick"></span><span class="lb">${y}</span>`;
+        b.addEventListener('click',()=>jumpYear(y));
+        axisTrack.appendChild(b); axisMarks[y]=b;
+      });
+      ys.forEach(y=>{
+        if(marks.includes(y)) return;
+        const d = el('button','axis-yr'); d.type='button'; d.dataset.year=y; d.dataset.y=y; d.style.left=pct(y);
+        d.addEventListener('click',()=>jumpYear(y));
+        axisTrack.appendChild(d); axisMarks[y]=d;
+      });
+    }
+    renderAxis(allYears);
+
+    // ---------- TIMELINE RENDER ----------
+    const byYear = {};
+    D.timeline.forEach(t=>{ (byYear[t.introduced_year] ||= []).push(t); });
+    const tl = $('#timeline');
+    allYears.forEach(y=>{
+      const sec = el('div','tl-year'); sec.id='y'+y;
+      const head = el('div','tl-yhead');
+      head.innerHTML = `<span class="ty">${y}</span><span class="tc i18n"><span class="zh">${byYear[y].length} 款</span><span class="en">${byYear[y].length} products</span></span>`;
+      const grid = el('div','tl-grid');
+      byYear[y].forEach(t=> grid.appendChild(card(t)));
+      sec.appendChild(head); sec.appendChild(grid);
+      tl.appendChild(sec);
+    });
+
+    // scroll-spy
+    const spy = new IntersectionObserver(es=>{
+      es.forEach(e=>{
+        if(e.isIntersecting){
+          const y=e.target.id.replace('y','');
+          Object.values(axisMarks).forEach(m=>m.classList.remove('active'));
+          if(axisMarks[y]) axisMarks[y].classList.add('active');
+        }
+      });
+    },{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    allYears.forEach(y=>{ const s=document.getElementById('y'+y); if(s) spy.observe(s); });
+
+    // ---------- CATEGORIES RENDER (left sidebar + group blocks) ----------
+    const cats = $('#categories');
+    const catSide = $('#cats-side');
+    let catSel = 'Mac';                 // 默认选中第一个分类
+    const catByGroup = {};
+    D.categories.forEach(c=>{ (catByGroup[c.group] ||= []).push(c); });
+
+    const MAIN_LINES = ["Mac","iPhone","iPad","iPod","Apple Watch","Apple TV","HomePod","AirPods","Vision"];
+
+    // 子系列 tab 行的裁切阴影（左/右有溢出时贴边提示）；时间线 chips 行共用这套
+    const tabsList = [];
+    function updateTabsShadow(tabs){
+      const max = (tabs.scrollWidth || 0) - (tabs.clientWidth || 0);
+      const sl = tabs.scrollLeft || 0;
+      tabs.classList.toggle('sh-left', sl > 2);
+      tabs.classList.toggle('sh-right', max - sl > 2);
+    }
+    function refreshTabShadows(){ tabsList.forEach(updateTabsShadow); }
+    tabsList.push(gc);   // 时间线一级 chips 行
+    gc.addEventListener('scroll', ()=>updateTabsShadow(gc));
+
+    // 侧栏位置：fixed 钉住不随页面滚动，但 top 跟随分类内容区顶部——
+    // 页面还在 Hero 区时侧栏贴着分类标题（不浮空），滚过之后钉在导航栏下方
+    const catsViewEl = document.querySelector('#view-cats');
+    function syncSideTop(){
+      if(!catsViewEl || typeof catsViewEl.getBoundingClientRect !== 'function') return;
+      const vt = catsViewEl.getBoundingClientRect().top;
+      const top = Math.max(56 + 18, vt + 18);
+      catSide.style.top = top + 'px';
+      // top 变大时同步收 max-height，侧栏底部不超出视口
+      const vh = window.innerHeight || 800;
+      catSide.style.maxHeight = Math.max(160, vh - top - 18) + 'px';
+    }
+    if(typeof window.addEventListener === 'function'){
+      window.addEventListener('scroll', syncSideTop, {passive:true});
+      window.addEventListener('resize', syncSideTop);
+    }
+
+    function renderSide(){
+      catSide.innerHTML = '';
+
+      const addTitle = (zh, en) => {
+        const t = el('div','sd-title i18n');
+        t.innerHTML = `<span class="zh">${zh}</span><span class="en">${en}</span>`;
+        catSide.appendChild(t);
+      };
+      const addGroupItem = g => {
+        const it = el('div','sd-item' + (catSel === g.id ? ' active' : ''));
+        it.innerHTML = `<span class="i18n"><span class="zh">${esc(g.name_zh)}</span><span class="en">${esc(g.name_en)}</span></span><span class="n">${g.count}</span>`;
+        it.dataset.group = g.id;
+        it.addEventListener('click', ()=>selectCat(g.id));
+        catSide.appendChild(it);
+      };
+
+      addTitle('产品类别', 'Products');
+      groups.filter(g=>MAIN_LINES.includes(g.id)).forEach(addGroupItem);
+      const others = groups.filter(g=>!MAIN_LINES.includes(g.id));
+      if(others.length){
+        addTitle('其他', 'Other');
+        others.forEach(addGroupItem);
+      }
+    }
+
+    function selectCat(gid){
+      catSel = gid;
+      renderSide();
+      applyFilter();
+      if(typeof window.scrollTo === 'function'){
+        const anchor = document.querySelector('#view-cats');
+        const rect = anchor && typeof anchor.getBoundingClientRect === 'function'
+          ? anchor.getBoundingClientRect() : {top:0};
+        // 即时滚动：smooth 动画期间用户的滚轮输入会被吞掉，感觉「切了分类滚不动」
+        window.scrollTo({top: Math.max(0, rect.top + (window.scrollY||0) - 64), behavior:'auto'});
+      }
+    }
+
+    groups.forEach(g=>{
+      const sec = el('div','group-block'); sec.id='grp-'+g.id; sec.dataset.group=g.id;
+
+      const head = el('div','gb-head');
+      head.innerHTML = `<h3 class="i18n"><span class="zh">${esc(g.name_zh)}</span><span class="en">${esc(g.name_en)}</span></h3>
+                        <span class="gb-count i18n"><span class="zh">${g.count} 款 · ${g.year_min}–${g.year_max}</span><span class="en">${g.count} products · ${g.year_min}–${g.year_max}</span></span>`;
+      sec.appendChild(head);
+
+      const subs = catByGroup[g.id] || [];
+      if(subs.length > 1){
+        const tabs = el('div','fam-tabs');
+        const panels = [];
+        subs.forEach((c, i)=>{
+          const t = el('button','fam-tab' + (i === 0 ? ' active' : ''));
+          t.type = 'button';
+          t.dataset.family = c.family;
+          t.innerHTML = `<span class="i18n"><span class="zh">${esc(c.family_zh)}</span><span class="en">${esc(c.family)}</span></span><span class="tcnt">${c.product_count}</span>`;
+          t.addEventListener('click', ()=>{
+            tabs.querySelectorAll('.fam-tab').forEach(x=>x.classList.remove('active'));
+            t.classList.add('active');
+            panels.forEach((pn, j)=>pn.classList.toggle('hide', j !== i));
+          });
+          tabs.appendChild(t);
+
+          const panel = el('div','fam-panel' + (i === 0 ? '' : ' hide'));
+          panel.dataset.family = c.family;
+          const grid = el('div','cat-grid');
+          c.products.forEach(p=> grid.appendChild(card(p)));
+          panel.appendChild(grid);
+          panels.push(panel);
+        });
+        sec.appendChild(tabs);
+        tabsList.push(tabs);
+        tabs.addEventListener('scroll', ()=>updateTabsShadow(tabs));
+        if(typeof requestAnimationFrame === 'function') requestAnimationFrame(()=>updateTabsShadow(tabs));
+        panels.forEach(pn=> sec.appendChild(pn));
+      } else if(subs.length === 1){
+        const grid = el('div','cat-grid');
+        subs[0].products.forEach(p=> grid.appendChild(card(p)));
+        sec.appendChild(grid);
+      }
+      cats.appendChild(sec);
+    });
+    renderSide();
+    // 字体加载 / 布局落定后多次重算，避免首次渲染时 scrollWidth 尚未算准导致阴影不出现
+    [0, 120, 350, 800].forEach(ms=>setTimeout(refreshTabShadows, ms));
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(refreshTabShadows).catch(()=>{});
+    if(typeof window.addEventListener === 'function'){
+      window.addEventListener('load', refreshTabShadows);
+      window.addEventListener('resize', refreshTabShadows);
+    }
+
+    // ---------- FILTER (group + sub-family multi-select) ----------
+    function applyFilter(){
+      // 有二级多选的组才显示（选中子系列 = 只看该组选中的子系列）；否则按一级大类
+      const selGroups = [...famSel.keys()].filter(g=>(famSel.get(g)||new Set()).size>0);
+      const anySel = activeGroups.size>0 || selGroups.length>0;
+      const okGroup = gid => !anySel || activeGroups.has(gid) || selGroups.includes(gid);
+      const okFam = (gid, fam) => {
+        const s = famSel.get(gid);
+        return !s || s.size === 0 || s.has(fam);
+      };
+      // timeline
+      document.querySelectorAll('#timeline .card').forEach(card=>{
+        const ok = okGroup(card.dataset.group) && okFam(card.dataset.group, card.dataset.family);
+        card.classList.toggle('hide', !ok);
+      });
+      document.querySelectorAll('#timeline .tl-year').forEach(sec=>{
+        const vis = [...sec.querySelectorAll('.card')].some(c=>!c.classList.contains('hide'));
+        sec.classList.toggle('hide', !vis);
+        const y = sec.id.replace('y','');
+        if(axisMarks[y]) axisMarks[y].classList.toggle('hide', !vis);
+      });
+      // categories
+      document.querySelectorAll('#categories .card').forEach(card=>{
+        const ok = okGroup(card.dataset.group);
+        card.classList.toggle('hide', !ok);
+      });
+      document.querySelectorAll('#categories .group-block').forEach(sec=>{
+        const vis = [...sec.querySelectorAll('.card')].some(c=>!c.classList.contains('hide'));
+        const inSel = !catSel || sec.dataset.group === catSel;
+        sec.classList.toggle('hide', !vis || !inSel);
+      });
+      // 第一个可见区块去掉顶部大间距，保证各分类标题位置一致
+      [...document.querySelectorAll('#categories .group-block')]
+        .filter(b=>!b.classList.contains('hide'))
+        .forEach((b,i)=>b.classList.toggle('first-vis', i === 0));
+      // axis range follows the visible years (empty years stay hidden)
+      const visYears = [...document.querySelectorAll('#timeline .tl-year')]
+        .filter(s=>!s.classList.contains('hide'))
+        .map(s=>+s.id.replace('y',''));
+      renderAxis(visYears);
+    }
+    // ---------- 搜索：浮层建议（与时间线/分类分离，点击结果直接开弹窗） ----------
+    const searchInput = $('#search');
+    const searchPanel = $('#search-panel');
+    const searchIdx = [];
+    D.categories.forEach(c=>c.products.forEach(p=>{
+      searchIdx.push({p, hay:[p.name, p.name_zh, p.family, p.family_zh,
+        p.group_zh, p.group_en, p.introduced_year].join(' ').toLowerCase()});
+    }));
+    function searchRank(p, q){
+      const nz=(p.name_zh||'').toLowerCase(), ne=(p.name||'').toLowerCase();
+      if(nz.startsWith(q)||ne.startsWith(q)) return 0;
+      if(nz.includes(q)||ne.includes(q)) return 1;
+      return 2;
+    }
+    function searchHits(q){
+      return searchIdx.filter(x=>x.hay.includes(q))
+        .sort((a,b)=> searchRank(a.p,q)-searchRank(b.p,q)
+          || (a.p.introduced_year||0)-(b.p.introduced_year||0))
+        .map(x=>x.p);
+    }
+    function closeSearchPanel(){ searchPanel.classList.remove('show'); }
+    function renderSearchPanel(q){
+      if(!q){ closeSearchPanel(); searchPanel.innerHTML=''; return; }
+      const all = searchHits(q);
+      const hits = all;   // 全量展示（浮层内部滚动），不再截断
+      let html = `<div class="sp-head i18n"><span class="zh">${all.length?`找到 ${all.length} 款产品，回车或点击查看详情`:'没有匹配的产品'}</span>`
+        + `<span class="en">${all.length?`${all.length} products found — press Enter or click for details`:'No matching products'}</span></div>`;
+      hits.forEach(p=>{
+        const ch=(p.name_zh||p.name||'?').charAt(0);
+        const img = p.img
+          ? `<img src="${p.img}" alt="" loading="lazy" onerror="this.style.display='none';this.parentNode.appendChild(Object.assign(document.createElement('div'),{className:'ph',textContent:'${esc(ch)}'}))">`
+          : `<div class="ph">${esc(ch)}</div>`;
+        html += `<div class="sp-item" data-id="${p.id}"><div class="sp-thumb">${img}</div>`
+          + `<div class="sp-txt"><div class="sp-name i18n"><span class="zh">${esc(p.name_zh||p.name)}</span><span class="en">${esc(p.name||p.name_zh)}</span></div>`
+          + `<div class="sp-meta i18n"><span class="zh">${esc(p.group_zh)} · ${p.introduced_year||'?'}</span><span class="en">${esc(p.group_en||p.group)} · ${p.introduced_year||'?'}</span></div>`
+          + `</div></div>`;
+      });
+      searchPanel.innerHTML = html;
+      searchPanel.classList.add('show');
+    }
+    // 浮层结果点击 → 直接开弹窗（委托在面板上，项是 innerHTML 渲染的）
+    searchPanel.addEventListener('click', e=>{
+      const it = e.target && typeof e.target.closest === 'function' ? e.target.closest('.sp-item') : null;
+      if(!it || !it.dataset) return;
+      const hit = searchIdx.find(x=>x.p.id===it.dataset.id);
+      if(hit){ closeSearchPanel(); openModal(hit.p); }
+    });
+    searchInput.addEventListener('input', e=>renderSearchPanel(e.target.value.trim().toLowerCase()));
+    searchInput.addEventListener('keydown', e=>{
+      if(e.key==='Escape'){ closeSearchPanel(); if(typeof searchInput.blur==='function') searchInput.blur(); return; }
+      if(e.key==='Enter'){
+        const q = searchInput.value.trim().toLowerCase();
+        if(!q) return;
+        const hits = searchHits(q);
+        if(hits.length){ closeSearchPanel(); openModal(hits[0]); }
+      }
+    });
+    // 点搜索框和浮层之外 → 收起浮层
+    document.addEventListener('click', e=>{
+      if(!searchPanel.classList.contains('show')) return;
+      const t = e.target;
+      if(t && typeof t.closest === 'function' && (t.closest('.search') || t.closest('.search-panel'))) return;
+      closeSearchPanel();
+    });
+
+    // ---------- VIEW SEGMENTED SWITCH ----------
+    const segBtns = document.querySelectorAll('#view-seg button');
+    function setView(v){
+      const t = v==='timeline';
+      $('#view-timeline').classList.toggle('hidden', !t);
+      $('#view-cats').classList.toggle('hidden', t);
+      segBtns.forEach(b=>b.classList.toggle('active', b.dataset.view===v));
+      // 切换视图时重置大类/二级分类筛选（搜索是独立的浮层，不随时间线/分类重置）
+      closeFamMenu(); closeSearchPanel();
+      if(activeGroups.size || famSel.size){
+        activeGroups.clear(); famSel.clear();
+        syncChips(); applyFilter();
+      }
+      // 进入分类视图：回到默认位置（首个分类 + 视图顶部）
+      if(!t){
+        catSel = 'Mac'; renderSide(); applyFilter();
+        const anchor = document.querySelector('#view-cats');
+        if(typeof window.scrollTo === 'function' && anchor && typeof anchor.getBoundingClientRect === 'function'){
+          window.scrollTo({top: Math.max(0, anchor.getBoundingClientRect().top + (window.scrollY || 0) - 64), behavior:'auto'});
+        }
+        syncSideTop();
+      }
+      refreshTabShadows();
+    }
+    segBtns.forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
+
+    // ---------- REVEAL ANIM ----------
+    let io;
+    function revealObserve(){
+      if(io) io.disconnect();
+      io = new IntersectionObserver(es=>{
+        es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+      },{rootMargin:'0px 0px -8% 0px',threshold:.05});
+      document.querySelectorAll('.reveal:not(.in)').forEach(n=>io.observe(n));
+    }
+    revealObserve();
+
+    // ---------- MODAL ----------
+    const mask=$('#mask'), mImg=$('#m-img'), mBody=$('#m-body'), mGallery=$('#m-gallery');
+    let modalImgs = [], modalImgIdx = 0;
+    function modalShowImg(i){
+      if(!modalImgs.length) return;
+      modalImgIdx = (i + modalImgs.length) % modalImgs.length;
+      const hero = $('#m-hero');
+      if(hero){ hero.style.display=''; hero.src = modalImgs[modalImgIdx]; }
+      mGallery.querySelectorAll('button').forEach((b,bi)=>b.classList.toggle('active', bi===modalImgIdx));
+      const cnt = $('#m-img-count');
+      if(cnt) cnt.textContent = (modalImgIdx+1) + ' / ' + modalImgs.length;
+    }
+    // 摄像头文本拆分：主摄 / 长焦 / 超广角 / 广角 / 前置
+    // 锚点 = 镜头名紧跟冒号（允许「N 万像素」前缀与「，具备可变光圈 (…)」/「 (通过…实现)」类修饰）；
+    // 超广角/Ultra Wide 必须先于 广角/Wide 匹配（前者包含后者）。
+    // 虚拟裁切（N 倍长焦功能 / 通过四合一像素传感器实现 / enabled by）不单独成 tab：
+    // 2 倍并入主摄、3 倍以上并入长焦——单物理镜头机型（SE / 16e / Air / 17e）不会多出幽灵长焦 tab，
+    // 三物理镜头机型（各代 Pro）也不会因介绍行里的「(长焦、广角及超广角)」吞掉长焦锚点。
+    const CAM_LABEL = { main:'主摄', tele:'长焦', ultra:'超广角', wide:'广角', front:'前置' };
+    const CAM_LABEL_EN = { main:'Main', tele:'Telephoto', ultra:'Ultra Wide', wide:'Wide', front:'Front' };
+    function splitCamera(text){
+      const t = String(text || '');
+      if(!t) return null;
+      const re = /((?:[\d]+\s*(?:万像素|MP|megapixel)[^：:，,、;；()（）]{0,24}?|[^：:，,、;；()（）]{0,24}?)(?:超广角|Ultra Wide|前置摄像头|原深感摄像头|TrueDepth|Front|长焦|Telephoto|广角|Wide|主摄|Main|Fusion|融合式)(?:[-\s]*(?:镜头|摄像头|cameras?|angle))?(?:[，,]?\s*(?:具备|with)[^：:]{0,60})?(?:\s*[（(][^)）]{0,30}[)）])?)[：:]/g;
+      const anchors = [];
+      let m;
+      while((m = re.exec(t))){
+        const head = (m[1] || '').trim();
+        if(head) anchors.push({ i: m.index, head });
+      }
+      if(anchors.length < 2) return null;
+      const isVirtual = h => /倍长焦|\dx\s*telephoto/i.test(h) &&
+          /功能|光学品质|通过|enabled|also\s*enables|optical-quality/i.test(h);
+      const out = {};
+      const order = [];
+      anchors.forEach((x, n)=>{
+        const end = n + 1 < anchors.length ? anchors[n + 1].i : t.length;
+        const start = (n === 0 && x.i > 0) ? 0 : x.i;   // 第一段带上开头的前缀（如「三摄：」）
+        const seg = t.slice(start, end).replace(/[、;；,，]\s*$/, '').trim();
+        if(!seg) return;
+        const h = x.head;
+        let key;
+        if(/超广角|Ultra Wide/i.test(h)) key = 'ultra';
+        else if(/长焦|Telephoto/i.test(h)){
+          key = isVirtual(h) ? (/[3-9]\s*倍|[3-9]\dx/i.test(h) ? 'tele' : 'main') : 'tele';
+        }
+        else if(/广角|Wide/i.test(h)) key = 'wide';
+        else if(/前置|原深感|TrueDepth|Front/i.test(h)) key = 'front';
+        else key = 'main';
+        // 虚拟裁切指向的镜组尚不存在时，并入第一个已有镜组（不新造幽灵 tab）
+        if(isVirtual(h) && (key === 'main' || key === 'tele') && !out[key] && order.length){
+          key = order[0];
+        }
+        if(!out[key]){ out[key] = seg; order.push(key); }
+        else out[key] += '；' + seg;
+      });
+      return Object.keys(out).length >= 2 ? out : null;
+    }
+    // 单个镜头片段 → 属性行（像素 / 焦距 / 光圈 / 防抖 / 对焦 / 超高分辨率照片…）
+    const CAM_ATTR_EN = {
+      '像素':'Pixels', '焦距':'Focal length', '光圈':'Aperture', '可变光圈':'Variable aperture',
+      '光学图像防抖':'Optical image stabilisation', '对焦':'Focus',
+      '超高分辨率照片':'Super-high-resolution photo', '变焦':'Zoom',
+    };
+    function parseCamSeg(seg){
+      const s = String(seg || '');
+      const rows = [];
+      const head = s.split('：')[0] || '';
+      const px = head.match(/(\d+)\s*万像素/);
+      if(px) rows.push(['像素', px[1] + ' 万']);
+      // 标题里带光圈信息（如「4800 万像素融合式主摄，具备可变光圈 (ƒ/1.48、ƒ/1.8…)」）
+      const hm = head.match(/[ƒf]\/[\d.]+/g);
+      if(hm && /光圈/.test(head)) rows.push([/可变/.test(head) ? '可变光圈' : '光圈', hm.join('、')]);
+      const rest = s.includes('：') ? s.slice(s.indexOf('：') + 1) : s;
+      rest.split(/[，,；;]/).forEach(raw=>{
+        const p = raw.trim();
+        if(!p) return;
+        // 纯镜头枚举句（「主摄及超广角」「广角和长焦摄像头」等）不是属性，跳过
+        if(/^[主摄广角长焦超前置深感像头双三摄系统和及、\s]+$/.test(p)) return;
+        const fm = p.match(/(\d+(?:\.\d+)?)\s*(?:毫米|mm)/);
+        if(/焦距/.test(p) && fm){
+          rows.push(['焦距', fm[1] + ' mm']);
+        } else if(/光圈/.test(p) && /[ƒf]\/[\d.]+/.test(p)){
+          const fs = p.match(/[ƒf]\/[\d.]+/g);
+          rows.push([/可变/.test(p) ? '可变光圈' : '光圈', fs.join('、')]);
+        } else if(/防抖/.test(p)){
+          const v = /第二代传感器位移/.test(p) ? '第二代传感器位移式'
+                  : /传感器位移/.test(p) ? '传感器位移式'
+                  : /光学图像防抖/.test(p) ? '光学图像防抖' : p;
+          rows.push(['光学图像防抖', v]);
+        } else if(/Focus Pixels/i.test(p)){
+          rows.push(['对焦', p.replace(/\s+/g, ' ').trim()]);
+        } else if(/超高分辨率照片/.test(p)){
+          const v = p.replace(/^支持\s*/, '').replace(/超高分辨率照片\s*/, '')
+                     .replace(/[（(]/g, '').replace(/[)）]/g, '')
+                     .replace(/和/g, '、').replace(/[、，,\s]*同时支持[\s\S]*$/, '').trim();
+          if(v) rows.push(['超高分辨率照片', v]);
+        } else if(/变焦|倍/.test(p)){
+          rows.push(['变焦', p]);
+        } else if(/棱镜/.test(p)){
+          rows.push(['棱镜', p]);
+        } else if(/镜头$/.test(p)){
+          rows.push(['镜头', p]);
+        } else if(/设计|结构/.test(p)){
+          rows.push(['设计', p]);
+        } else {
+          rows.push(['其他', p]);
+        }
+      });
+      // 同名属性聚合（多镜组合并后会出现重复项）
+      const agg = [], idx = {};
+      rows.forEach(([l, v])=>{
+        if(!l){ agg.push([l, v]); return; }
+        if(idx[l] === undefined){ idx[l] = agg.length; agg.push([l, v]); }
+        else if(!agg[idx[l]][1].includes(v)) agg[idx[l]][1] += '、' + v;
+      });
+      if(agg.length) return agg;
+      return head.trim() ? [[head.trim(), '']] : [['', s]];
+    }
+    function cameraHtml(val, lang){
+      const parts = splitCamera(val);
+      if(!parts){
+        const rows = parseCamSeg(val).map(([l,v])=> l
+          ? `<div class="row"><div class="lab">${esc(lang==='en'?(CAM_ATTR_EN[l]||l):l)}</div><div>${esc(v)}</div></div>`
+          : `<div class="row wide"><div>${esc(v)}</div></div>`).join('');
+        return rows || `<div class="row wide"><div>${esc(val)}</div></div>`;
+      }
+      const keys = Object.keys(parts);
+      const tabs = keys.map((k,i)=>
+        `<button type="button" class="cam-tab${i===0?' active':''}" data-k="${k}">${lang==='en'?CAM_LABEL_EN[k]:CAM_LABEL[k]}</button>`).join('');
+      const panels = keys.map((k,i)=>{
+        const body = parseCamSeg(parts[k]).map(([l,v])=>{
+          if(!l) return `<div class="row wide"><div>${esc(v)}</div></div>`;
+          return `<div class="row"><div class="lab">${esc(lang==='en'?(CAM_ATTR_EN[l]||l):l)}</div><div>${esc(v)}</div></div>`;
+        }).join('');
+        return `<div class="cam-panel${i===0?'':' hide'}" data-k="${k}">${body}</div>`;
+      }).join('');
+      return `<div class="cam-tabs">${tabs}</div>${panels}`;
+    }
+
+    // 结构化规格 + 官方独有条目，按组统一渲染（概览组不再重复发布/停产时间）
+    function specsHtml(p, lang){
+      const spec = (lang==='en' ? p.specs_en : p.specs_zh) || {};
+      const extra = (lang==='en' ? p.extra_en : p.extra_zh) || [];
+      // 端口字段由「按键与接口」组的官方条目统一呈现，规格表里不再重复
+      const SKIP = { release_date: 1, discontinued: 1, usb: 1, thunderbolt: 1, firewire: 1, ethernet: 1 };
+      const GROUP_EN = {};
+      D.spec_fields.forEach(f=>{ GROUP_EN[f.group_zh] = f.group_en; });
+      GROUP_EN['按键与接口'] = 'Buttons & Ports';
+      GROUP_EN['传感器'] = 'Sensors';
+      GROUP_EN['其他'] = 'Other';
+
+      const order = ['芯片与性能','内存与存储','显示','摄像头','音频','无线连接与网络',
+                     '尺寸与重量','电池与电源','按键与接口','外观','系统','标识','传感器','其他'];
+      const extraByGroup = {};
+      extra.forEach(e=>{ (extraByGroup[e.g || '其他'] ||= []).push(e); });
+
+      let h = '';
+      const emit = gz => {
+        let body = '';
+        D.spec_fields.filter(f=>f.group_zh === gz && !SKIP[f.key]).forEach(f=>{
+          let v = spec[f.key];
+          if(v === null || v === undefined) return;
+          if(Array.isArray(v)){ if(!v.length) return; v = v.join(lang==='en' ? ', ' : '、'); }
+          if(typeof v === 'string' && !v.trim()) return;
+          if(f.key === 'camera'){ body += cameraHtml(v, lang); return; }
+          body += `<div class="row"><div class="lab">${esc(lang==='en' ? f.en : f.zh)}</div><div>${esc(v)}</div></div>`;
+        });
+        (extraByGroup[gz] || []).forEach(e=>{
+          const l = (e.l || '').trim();
+          const v = (e.v || '').trim();
+          if(l && (!v || l === v)){
+            body += `<div class="row wide"><div>${esc(l)}</div></div>`;
+          } else if(l){
+            body += `<div class="row"><div class="lab">${esc(l)}</div><div>${esc(v)}</div></div>`;
+          } else if(v){
+            body += `<div class="row wide"><div>${esc(v)}</div></div>`;
+          }
+        });
+        if(body) h += `<h5>${esc(lang==='en' ? (GROUP_EN[gz] || gz) : gz)}</h5>` + body;
+      };
+      order.forEach(emit);
+      return h;
+    }
+    // Apple 官方技术规格全文（分章节）
+    function openModal(p){
+      p = FULL[p.id] || p;
+      // 搜索浮层盖在弹窗上层（z-index 更高），开弹窗时收起
+      if(typeof closeSearchPanel === 'function') closeSearchPanel();
+      const g = groupById[p.group] || {color:'#86868b', name_zh:p.group_zh, name_en:p.group};
+
+      // hero image (single per product in the merged library)
+      const imgs = p.img ? [p.img] : [];
+      modalImgs = imgs; modalImgIdx = 0;
+      const fallback = `<div class="ph" style="font-size:46px;color:#c7c7cc">${esc((p.name_zh||p.name).charAt(0))}</div>`;
+      mImg.innerHTML = imgs.length
+        ? `<img id="m-hero" src="${imgs[0]}" alt="${esc(p.name_zh||p.name)}" onerror="this.style.display='none';var d=document.createElement('div');d.className='ph';d.style.fontSize='46px';d.style.color='#c7c7cc';d.textContent='${esc((p.name_zh||p.name).charAt(0))}';this.parentNode.appendChild(d);"/>`
+        : fallback;
+      if(imgs.length>1){
+        mImg.insertAdjacentHTML('beforeend',
+          `<button class="img-nav prev" type="button" aria-label="上一张"><svg viewBox="0 0 10 16"><path d="M8 1L2 8l6 7"/></svg></button>
+           <button class="img-nav next" type="button" aria-label="下一张"><svg viewBox="0 0 10 16"><path d="M2 1l6 7-6 7"/></svg></button>
+           <span class="img-count" id="m-img-count">1 / ${imgs.length}</span>`);
+        mImg.querySelector('.img-nav.prev').addEventListener('click', ()=>modalShowImg(modalImgIdx-1));
+        mImg.querySelector('.img-nav.next').addEventListener('click', ()=>modalShowImg(modalImgIdx+1));
+        mGallery.classList.remove('hidden');
+        mGallery.innerHTML='';
+        imgs.forEach((src,i)=>{
+          const b = el('button'); if(i===0) b.classList.add('active');
+          b.innerHTML = `<img src="${src}" alt="图 ${i+1}" loading="lazy"/>`;
+          b.addEventListener('click',()=>modalShowImg(i));
+          mGallery.appendChild(b);
+        });
+      } else {
+        mGallery.classList.add('hidden'); mGallery.innerHTML='';
+      }
+
+      const enDiff = (p.name_zh && p.name !== p.name_zh);
+      const sz = p.specs_zh || {}, se = p.specs_en || {};
+      const facts = [
+        ['大类','Category', p.group_zh, p.group_en || p.group],
+        ['系列','Family', p.family_zh, p.family],
+        ['发布时间','Release date', sz.release_date || '—', se.release_date || '—'],
+        ['停产时间','Discontinued', sz.discontinued || '在售 / 未记录', se.discontinued || '—'],
+      ];
+      const factsHtml = lang => facts.map(f=>{
+        const k = lang==='zh' ? f[0] : f[1];
+        const v = lang==='zh' ? f[2] : f[3];
+        const sub = lang==='zh' ? f[3] : '';   // 英文模式不再显示中文副值
+        return `<div class="m-fact"><div class="k">${esc(k)}</div><div class="v">${esc(v)}${sub && sub!==v ? `<small>${esc(sub)}</small>` : ''}</div></div>`;
+      }).join('');
+      const lv = p.logo_variant ? ` (${esc(p.logo_variant)})` : '';
+      const hasSpecs = Object.keys(sz).length > 0 || (p.extra_zh || []).length > 0;
+      mBody.innerHTML = `
+        <div class="m-toprow">
+          <div>
+            <h2 class="i18n"><span class="zh">${esc(p.name_zh||p.name)}${lv}</span><span class="en">${esc(p.name)}${lv}</span></h2>
+            ${enDiff?`<div class="m-name-en i18n"><span class="zh">${esc(p.name)}</span><span class="en">${esc(p.name_zh)}</span></div>`:''}
+            <div class="m-family i18n"><span class="zh">${esc(p.group_zh)}<span class="sep">·</span>${esc(p.family_zh)}</span><span class="en">${esc(p.group_en||p.group)}<span class="sep">·</span>${esc(p.family)}</span></div>
+          </div>
+        </div>
+        <div class="i18n">
+          <div class="m-facts zh">${factsHtml('zh')}</div>
+          <div class="m-facts en">${factsHtml('en')}</div>
+        </div>
+        <div class="i18n">
+          <div class="zh">
+            ${hasSpecs?`<div class="m-sec m-specs"><h4>规格参数</h4>${specsHtml(p,'zh')}</div>`:''}
+          </div>
+          <div class="en">
+            ${hasSpecs?`<div class="m-sec m-specs"><h4>Specifications</h4>${specsHtml(p,'en')}</div>`:''}
+          </div>
+        </div>`;
+
+      // 摄像头镜组 tab 切换
+      mBody.querySelectorAll('.cam-tab').forEach(t=>{
+        t.addEventListener('click', ()=>{
+          const k = t.dataset.k;
+          mBody.querySelectorAll('.cam-tab').forEach(x=>x.classList.toggle('active', x === t));
+          mBody.querySelectorAll('.cam-panel').forEach(pn=>pn.classList.toggle('hide', pn.dataset.k !== k));
+        });
+      });
+      // 不锁 body 滚动：弹窗滚到底后滚轮继续链到页面（mask 是 fixed 全屏浮层，
+      // 打开时所有滚轮事件都落在 mask 上，页面只会通过滚动链被带动，不会直接穿透过）
+      mask.classList.add('open'); mask.scrollTop = 0;
+    }
+    function closeModal(){ mask.classList.remove('open'); }
+    $('#modal-close').addEventListener('click', closeModal);
+    mask.addEventListener('click', e=>{ if(e.target===mask) closeModal(); });
+    // 摄像头 tab 行 overflow-x:auto 会把纵向滚轮吞掉（overflow-y 计算值变为 auto 成为滚动容器，
+    // 有概率不向上链接到弹窗）→ 纵向滚轮转给弹窗滚动，横向滚轮留给 tab 行（mBody 稳定，只绑一次）
+    mBody.addEventListener('wheel', e=>{
+      const tabs = e.target && e.target.closest ? e.target.closest('.cam-tabs') : null;
+      if(!tabs || Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      e.preventDefault();
+      mask.scrollTop += e.deltaY;
+    }, {passive:false});
+    document.addEventListener('keydown', e=>{
+      if(e.key==='Escape'){ closeModal(); return; }
+      if(!mask.classList.contains('open') || modalImgs.length<2) return;
+      if(e.key==='ArrowLeft') modalShowImg(modalImgIdx-1);
+      if(e.key==='ArrowRight') modalShowImg(modalImgIdx+1);
+    });
+
+  })();
+  </script>
+</body>
+</html>

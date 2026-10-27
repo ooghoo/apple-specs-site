@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apple Specs Offline — 本地规格文档库</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../../" title="返回项目入口">
+      <span class="logo">&#63743;</span>
+      <span class="brand-name">Apple Specs <em>Offline</em></span>
+    </a>
+    <div class="topbar-right">
+      <div class="lang-switch" id="lang-switch" role="group" aria-label="文档语言切换">
+        <button type="button" data-lang="zh">中文</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <span class="failed-badge" id="failed-badge" hidden></span>
+      <button class="auth-pill" id="auth-pill" type="button" title="私有数据访问授权">未授权</button>
+      <span class="stat-pill" id="stat-pill" tabindex="0"></span>
+    </div>
+  </div>
+</header>
+
+<!-- 授权对话框：令牌只存本地浏览器，不上传任何服务器 -->
+<div class="auth-mask" id="auth-mask" hidden>
+  <div class="auth-dialog" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <h2 id="auth-title">访问私有归档数据</h2>
+    <p class="auth-desc">
+      官方技术规格原文与镜像资源保存在私有仓库 <code>ooghoo/apple-specs</code> 中。
+      粘贴一个 fine-grained personal access token 即可在浏览器内直连读取，<b>令牌仅保存在本机浏览器</b>，不会上传到任何服务器。
+    </p>
+    <label class="auth-label" for="auth-token">Personal access token</label>
+    <input class="auth-input" id="auth-token" type="password" autocomplete="off" spellcheck="false"
+           placeholder="github_pat_…">
+    <p class="auth-hint">
+      需要权限：<code>Contents: Read-only</code>，且仅限 <code>ooghoo/apple-specs</code> 一个仓库。
+    </p>
+    <p class="auth-error" id="auth-error" hidden></p>
+    <div class="auth-actions">
+      <button class="auth-btn" id="auth-cancel" type="button">取消</button>
+      <button class="auth-btn primary" id="auth-save" type="button">保存并验证</button>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="stage">
+      <nav id="main-nav" aria-label="浏览"></nav>
+      <nav id="category-nav" aria-label="产品分类"></nav>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="stage">
+      <div class="col">
+        <section class="hero">
+          <div class="hero-head">
+            <div class="title-wrap">
+              <h1 id="page-title">全部文档</h1>
+              <span id="result-count" class="result-count"></span>
+              <button class="trash-btn" id="recent-trash" type="button" title="清除全部最近浏览" hidden>
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                  <path d="M3.5 6.5h17M9.5 6.5V4.8A1.3 1.3 0 0 1 10.8 3.5h2.4a1.3 1.3 0 0 1 1.3 1.3v1.7m2.6 0v12.7a1.8 1.8 0 0 1-1.8 1.8H8.7a1.8 1.8 0 0 1-1.8-1.8V6.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10 10.5v6M14 10.5v6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="searchbox">
+              <svg viewBox="0 0 18 25" class="search-icon" aria-hidden="true">
+                <rect width="18" height="25" fill="none"/>
+                <path d="M17.512,20.113l-4.786-4.788a7.068,7.068,0,1,0-.777.778l4.785,4.788a.55.55,0,1,0-.777-.777ZM1.427,10.75A5.946,5.946,0,1,1,7.373,16.7a5.957,5.957,0,0,1-5.946-5.95Z"/>
+              </svg>
+              <input id="search" type="search" placeholder="全文搜索" autocomplete="off">
+              <button id="search-clear" class="clear-btn" hidden>×</button>
+            </div>
+          </div>
+          <div class="tabs" id="tabs" role="tablist" hidden></div>
+          <div class="filters" id="search-cat-filters" hidden></div>
+        </section>
+
+        <div id="doc-grid" class="doc-grid"></div>
+        <div id="empty" class="empty" hidden>
+          <p>没有匹配的文档。</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- 文档大弹窗：贴齐左右下边缘，从底部滑入；顶部为本地链接与关闭按钮 -->
+<div class="doc-modal" id="doc-modal" hidden>
+  <div class="doc-modal-backdrop" data-close="1"></div>
+  <div class="doc-modal-panel" role="dialog" aria-modal="true" aria-label="归档文档预览">
+    <div class="doc-modal-bar">
+      <span class="doc-modal-url" id="doc-modal-url"></span>
+      <div class="doc-modal-actions">
+        <div class="doc-modal-lang" id="doc-modal-lang" role="group" aria-label="文档语言切换">
+          <button type="button" data-lang="zh">中文</button>
+          <button type="button" data-lang="en">EN</button>
+        </div>
+        <a class="doc-modal-open" id="doc-modal-open" href="#" target="_blank" rel="noopener" title="在新标签页打开本地归档页">↗</a>
+        <button class="doc-modal-close" id="doc-modal-close" type="button" aria-label="关闭弹窗" title="关闭 (Esc)">✕</button>
+      </div>
+    </div>
+    <div class="doc-loading" id="doc-loading" hidden></div>
+    <iframe class="doc-modal-frame" id="doc-modal-frame" title="归档文档预览"
+            referrerpolicy="no-referrer"></iframe>
+  </div>
+</div>
+
+<!-- 语言回退提示（中文模式下打开无中文版文档时闪现） -->
+<div class="lang-toast" id="lang-toast" role="status" hidden></div>
+
+<script src="private-api.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
